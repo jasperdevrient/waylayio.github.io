@@ -1,209 +1,30 @@
+---
+layout: null
+---
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Waylay blog</title>
-    <description>Waylay is a visual tool for automating IoT solutions. It connects devices and applications to enable better real-time decisions via smart reasoning.
-</description>
-    <link>http://blog.waylay.io/</link>
-    <atom:link href="http://blog.waylay.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 27 May 2015 14:17:55 +0200</pubDate>
-    <lastBuildDate>Wed, 27 May 2015 14:17:55 +0200</lastBuildDate>
-    <generator>Jekyll v2.5.3</generator>
-    
+    <title>{{ site.title | xml_escape }}</title>
+    <description>{{ site.description | xml_escape }}</description>
+    <link>{{ site.url }}{{ site.baseurl }}/</link>
+    <atom:link href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}" rel="self" type="application/rss+xml"/>
+    <pubDate>{{ site.time | date_to_rfc822 }}</pubDate>
+    <lastBuildDate>{{ site.time | date_to_rfc822 }}</lastBuildDate>
+    <generator>Jekyll v{{ jekyll.version }}</generator>
+    {% for post in site.posts limit:10 %}
       <item>
-        <title>Streaming events from your Spark core to Waylay</title>
-        <description>&lt;p&gt;Hi, this is our first more technical blog post, you can expect more soon.&lt;/p&gt;
-
-&lt;h1 id=&quot;spark-core&quot;&gt;Spark Core&lt;/h1&gt;
-
-&lt;p&gt;So what us a Spark Core? Some of you might have though about Apache Spark when
-reading the blog title but we are talking about &lt;a href=&quot;https://www.spark.io/&quot;&gt;Spark.io&lt;/a&gt;.
-This is what their website mentions:&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Spark offers a suite of hardware and software tools to help you
-prototype, scale, and manage your Internet of Things products.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Currently, their main offering is a hardware device similar to an Arduino but way smaller. It is fully wifi enabled, can be programmed over the web and comes with the needed libraries to connect it to the Spark cloud infrastructure. Have a look at their &lt;a href=&quot;http://docs.spark.io/&quot;&gt;documentation&lt;/a&gt; if you want to dig a bit deeper.&lt;/p&gt;
-
-&lt;h1 id=&quot;integration&quot;&gt;Integration&lt;/h1&gt;
-
-&lt;p&gt;This blog post will show you how you can connect a simple motion sensor to
-your spark core and send the motion events to the waylay platform. We will then
-set up a waylay task that will consume these events and send out and email when
-motion is detected.&lt;/p&gt;
-
-&lt;h1 id=&quot;what-you-need&quot;&gt;What you need&lt;/h1&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;A Spark Core&lt;/li&gt;
-  &lt;li&gt;A PIR sensor, we are using a &lt;a href=&quot;https://www.parallax.com/product/555-28027&quot;&gt;Parallax PIR Sensor&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Some electrical wires&lt;/li&gt;
-  &lt;li&gt;Credentials to log in to the spark.io build environment&lt;/li&gt;
-  &lt;li&gt;Credentials to log in to your waylay environment. Click the Start a Free Trial button on &lt;a href=&quot;https://www.waylay.io/&quot;&gt;our website&lt;/a&gt; to request an account.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&quot;connecting-the-motion-sensor&quot;&gt;Connecting the motion sensor&lt;/h1&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/sparkcore.jpg&quot; alt=&quot;Spark core connections picture&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;This is how the connections are set up&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;PIR OUT → Spark D0&lt;/li&gt;
-  &lt;li&gt;PIR GND → Spark GND&lt;/li&gt;
-  &lt;li&gt;PIR VCC → Spark 3V3&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;The Digital input number 0 will receive the motion signal. Our sensor keeps the
-signal ON for about one second and then drops back to OFF. As you can see in the
-picture the sensor also indicates motion by showing a light red glow on the
-sides.&lt;/p&gt;
-
-&lt;h1 id=&quot;programming-the-spark-core&quot;&gt;Programming the Spark Core&lt;/h1&gt;
-
-&lt;p&gt;Now go to the &lt;a href=&quot;https://build.spark.io&quot;&gt;spark build environment&lt;/a&gt;. Select your spark core and
-enter the following code:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c&quot; data-lang=&quot;c&quot;&gt;&lt;span class=&quot;lineno&quot;&gt; 1&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PIN_PIR&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;D0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt; 2&lt;/span&gt; 
-&lt;span class=&quot;lineno&quot;&gt; 3&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;bool&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;motion&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt; 4&lt;/span&gt; 
-&lt;span class=&quot;lineno&quot;&gt; 5&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setup&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt; 6&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;  
-&lt;span class=&quot;lineno&quot;&gt; 7&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;pinMode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PIN_PIR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;INPUT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt; 8&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;Spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;variable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;motion&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;motion&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BOOLEAN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt; 9&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;10&lt;/span&gt; 
-&lt;span class=&quot;lineno&quot;&gt;11&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;loop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;12&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;13&lt;/span&gt;     &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;oldMotion&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;motion&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;14&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;motion&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;digitalRead&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PIN_PIR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;15&lt;/span&gt;     &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;oldMotion&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;motion&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;16&lt;/span&gt;         &lt;span class=&quot;n&quot;&gt;Spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;publish&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;motion&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;waylay/motion-detected&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;waylay/motion-stopped&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;17&lt;/span&gt;     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;18&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Upload the program to the core with the PIR sensor. Go to the
-&lt;a href=&quot;https://dashboard.spark.io/&quot;&gt;spark dashboard&lt;/a&gt; to check if your events are being submitted
-properly. You should see something similar to the next screenshot. You can ignore the webhook events for now, we are going to set that up in the next section.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/sparkdashboard.png&quot; alt=&quot;Spark dashboard screenshot&quot; /&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;forwarding-the-spark-events-to-the-waylay-broker&quot;&gt;Forwarding the spark events to the Waylay broker&lt;/h1&gt;
-
-&lt;p&gt;There are different paths to integration. We could for example use a C MQTT
-library and directly connect to the Waylay broker. But since I’m not too fond
-of having to write too much in C we are going to use the Spark platform
-&lt;a href=&quot;http://docs.spark.io/webhooks/&quot;&gt;webhooks&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Create a file named &lt;code&gt;motion.json&lt;/code&gt; with the following contents. Don’t forget to
-replace &lt;code&gt;yourdevice&lt;/code&gt;, &lt;code&gt;yourenv.waylay.io&lt;/code&gt;, &lt;code&gt;your_waylay_api_key&lt;/code&gt; and &lt;code&gt;your_waylay_api_secret&lt;/code&gt;
-with the appropriate values.&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-json&quot; data-lang=&quot;json&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;quot;eventName&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;waylay/motion&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;quot;url&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;https://data.waylay.io/resources/yourdevice?domain=yourenv.waylay.io&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;quot;requestType&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;POST&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;quot;auth&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;quot;username&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;your_waylay_api_key&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;quot;password&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;your_waylay_api_secret&amp;quot;&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;quot;json&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;{{SPARK_EVENT_NAME}}&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;quot;value&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;{{SPARK_EVENT_VALUE}}&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;quot;source&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;{{SPARK_CORE_ID}}&amp;quot;&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;quot;mydevices&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;This webhook will pick up all &lt;code&gt;waylay/motion&lt;/code&gt; prefixed events and send them to
-the waylay data broker.&lt;/p&gt;
-
-&lt;p&gt;Make sure you have the Spark CLI &lt;a href=&quot;http://docs.spark.io/cli&quot;&gt;installed&lt;/a&gt; and run the following
-command on your terminal:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;spark webhook create motion.json&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Check if the hook is installed correctly.&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;spark webhook list
-Found &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt; hooks registered
-
-    1.&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; Hook &lt;span class=&quot;c&quot;&gt;#5524eecf3aa0d70d2529aaaa is watching for &amp;quot;waylay/motion&amp;quot;&lt;/span&gt;
-        and posting to: https://data.waylay.io/resources/yourdevice?domain&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;yourenv.waylay.io
-        created at 2015-04-08T09:03:11.555Z&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;You should now also see webhook events popping up on the Spark dashboard. Check
-the responses sent by the waylay server to see if everything is working properly.&lt;/p&gt;
-
-&lt;h1 id=&quot;creating-the-waylay-sensor&quot;&gt;Creating the waylay sensor&lt;/h1&gt;
-
-&lt;p&gt;As there is no provided sensor for a motion sensor we will quicky create one.
-This sensor will inspect the incoming data and translate it into a MOTION /
-NOMOTION state.
-Create a new sensor, enter 2 states &lt;code&gt;MOTION&lt;/code&gt; and &lt;code&gt;NOMOTION&lt;/code&gt;, remove the example
-property/raw data items and paste the following code into the editor:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;eventName&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;rawData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;GLOBAL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;3&lt;/span&gt;     &lt;span class=&quot;nx&quot;&gt;observedState&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;eventName&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;waylay/motion-detected&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;MOTION&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;NOMOTION&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;4&lt;/span&gt;     &lt;span class=&quot;nx&quot;&gt;rawData&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;rawData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;GLOBAL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;5&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-&lt;span class=&quot;lineno&quot;&gt;6&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;send&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Save the sensor as &lt;code&gt;Motion&lt;/code&gt; version &lt;code&gt;1.0.0&lt;/code&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;bringing-it-all-together&quot;&gt;Bringing it all together&lt;/h1&gt;
-
-&lt;p&gt;Almost there. All we need now is a Waylay template that receives the events and
-sends out an email.&lt;/p&gt;
-
-&lt;p&gt;Open the template editor and start by dragging in your newly created &lt;code&gt;Motion&lt;/code&gt;
-sensor. Now drag in a mail actuator and connect the sensor to it.&lt;/p&gt;
-
-&lt;p&gt;Apply the following configuration to the motion sensor:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;resource: &lt;code&gt;yourdevice&lt;/code&gt; (same as used in the Spark webhook)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Apply the following configuration to the mail actuator:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;address: &lt;code&gt;you@yourmail.com&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;subject: &lt;code&gt;intrusion&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;message: &lt;code&gt;Motion detected!&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;State triggers, enable &lt;code&gt;MOTION&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;Trigger policy: &lt;code&gt;Frequency&lt;/code&gt; with value &lt;code&gt;300&lt;/code&gt; sec&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;After enabling the labels the end result should look like this:
-&lt;img src=&quot;/assets/images/motion.png&quot; alt=&quot;Waylay motion template&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Now click on the debug tab and start the debug task. When the first motion event
-is received the task will send you an email. The mail actuator will not send
-further events until 5 minutes have passed.&lt;/p&gt;
-
-&lt;h1 id=&quot;concluding&quot;&gt;Concluding&lt;/h1&gt;
-
-&lt;p&gt;As you can see integrating other services with the Waylay platform is easy.
-We only used http but we also support other protocols like MQTT or WebSockets.&lt;/p&gt;
-
-&lt;p&gt;In this post we touched only a very small part of the Waylay IoT integration
-platform. Feel free to check the Waylay &lt;a href=&quot;https://docs.waylay.io/&quot;&gt;documentation&lt;/a&gt; and try out some more
-complex scenarios, we are eager to hear about your experiments!&lt;/p&gt;
-
-</description>
-        <pubDate>Thu, 16 Apr 2015 16:59:06 +0200</pubDate>
-        <link>http://blog.waylay.io/integration/2015/04/16/streaming-events-from-your-spark-core.html</link>
-        <guid isPermaLink="true">http://blog.waylay.io/integration/2015/04/16/streaming-events-from-your-spark-core.html</guid>
-        
-        
-        <category>integration</category>
-        
+        <title>{{ post.title | xml_escape }}</title>
+        <description>{{ post.content | xml_escape }}</description>
+        <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
+        <link>{{ post.url | prepend: site.baseurl | prepend: site.url }}</link>
+        <guid isPermaLink="true">{{ post.url | prepend: site.baseurl | prepend: site.url }}</guid>
+        {% for tag in post.tags %}
+        <category>{{ tag | xml_escape }}</category>
+        {% endfor %}
+        {% for cat in post.categories %}
+        <category>{{ cat | xml_escape }}</category>
+        {% endfor %}
       </item>
-    
+    {% endfor %}
   </channel>
 </rss>
