@@ -89,12 +89,16 @@ We're using the Stocks channel to trigger our Maker action channel in two separa
 
 For each of them, do the respective settings below:
 ![IFTTT_tut_IFtoWaylay_step3_pricebelow screenshot]({{ site.baseurl }}/assets/images/IFTTT_tut_IFtoWaylay_step3_pricebelow.JPG)
+________
 ![IFTTT_tut_IFtoWaylay_step4_chooseMaker screenshot]({{ site.baseurl }}/assets/images/IFTTT_tut_IFtoWaylay_step4_chooseMaker.JPG)
+________
 ![IFTTT_tut_IFtoWaylay_step5_makeWebRequest screenshot]({{ site.baseurl }}/assets/images/IFTTT_tut_IFtoWaylay_step5_makeWebRequest.JPG)
+--------
 
 And finally we are going to configure the Waylay action channel
+```
 ![IFTTT_tut_IFtoWaylay_step4_chooseMaker screenshot]({{ site.baseurl }}/assets/images/IFTTT_tut_IFtoWaylay_step4_chooseMaker.JPG)
-
+```
 To be continued!
 
 #Concluding
