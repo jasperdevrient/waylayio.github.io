@@ -60,8 +60,8 @@ In this chapter, we will have two IF recipes pushing data into Waylay broker, an
 ##Creating a template and resource
 We will require two sensors in a template, one receiving the closing price and the other receiving the percentage drop in price.   
 Place two streamDataSensor onto the white space and enter the following properties:   
-name: streamSensor_stockPrice, parameter: closingPrice_appleStock, threshold: 100   
-name: streamingSensor_percentageDrop, parameter: percentageDrop_appleStock, threshold: 5   
+> name: streamSensor_stockPrice, parameter: closingPrice_appleStock, threshold: 100   
+> name: streamingSensor_percentageDrop, parameter: percentageDrop_appleStock, threshold: 5   
 ![IFTTT_tut_IFtoWaylay_createTemplate_sensors screenshot]({{ site.baseurl }}/assets/images/IFTTT_tut_IFtoWaylay_createTemplate_sensors.JPG)   
 
 Then connect both of the sensors to an AND Gate, changing the triggering states to "Below" for price and "Above" for percentage drop.   
@@ -87,19 +87,34 @@ We're using the Stocks channel to trigger our Maker action channel in two separa
 ![IFTTT_tut_IFtoWaylay_step2_chooseTrigger screenshot]({{ site.baseurl }}/assets/images/IFTTT_tut_IFtoWaylay_step2_chooseTrigger.JPG)   
 
 For each of them, do the respective settings below:     
-![IFTTT_tut_IFtoWaylay_step3_pricebelow screenshot]({{ site.baseurl }}/assets/images/IFTTT_tut_IFtoWaylay_step3_pricebelow.JPG)   
-![IFTTT_tut_IFtoWaylay_step4_chooseMaker screenshot]({{ site.baseurl }}/assets/images/IFTTT_tut_IFtoWaylay_step4_chooseMaker.JPG)   
-![IFTTT_tut_IFtoWaylay_step5_makeWebRequest screenshot]({{ site.baseurl }}/assets/images/IFTTT_tut_IFtoWaylay_step5_makeWebRequest.JPG)   
-   
-And finally we are going to configure the Waylay action channel
-
+> ![IFTTT_tut_IFtoWaylay_step3_pricebelow screenshot]({{ site.baseurl }}/assets/images/IFTTT_tut_IFtoWaylay_step3_pricebelow.JPG)   
 > ![IFTTT_tut_IFtoWaylay_step4_chooseMaker screenshot]({{ site.baseurl }}/assets/images/IFTTT_tut_IFtoWaylay_step4_chooseMaker.JPG)   
+> ![IFTTT_tut_IFtoWaylay_step5_makeWebRequest screenshot]({{ site.baseurl }}/assets/images/IFTTT_tut_IFtoWaylay_step5_makeWebRequest.JPG)   
+   
+And finally we are going to configure the Waylay action channels. Here's where you use the Waylay APIKey and APISecret you retrieved earlier.   
+Noted that the domain will be the domain you are using, app.waylay.io is just what I'm using for testing.
+Enter the below in the respective recipes:   
 
-To be continued!
+> URL: https://data.waylay.io/messages?domain={app.waylay.io}&apiKey={apiKey}&apiSecret={apiSecret}   
+> Method: POST   
+> Content Type: application/json   
+> Body for Closing Price Recipe: {"resource":"apple_stockPrice_emailAlert", "closingPrice_appleStock":{{Price}}}   
+> Body for Percentage Drop Recipe: {"resource":"apple_stockPrice_emailAlert", "percentageDrop_appleStock":{{PercentageChange}} }   
+   
+> ![IFTTT_tut_IFtoWaylay_step6_makeractionsettings screenshot]({{ site.baseurl }}/assets/images/IFTTT_tut_IFtoWaylay_step6_makeractionsettings.JPG)   
 
+Now whenever the recipes are triggered, the web requests sent to the Waylay Broker will change the states of the sensors in our task accordingly.   
+When price falls below 100 and percentage drop is above 5, our Email Actuator on Waylay is triggered. (We're using test data in the screenshots below)
+> ![IFTTT_tut_IFtoWaylay_taskview1 screenshot]({{ site.baseurl }}/assets/images/IFTTT_tut_IFtoWaylay_taskview1.JPG)   
+> ![IFTTT_tut_IFtoWaylay_taskview2log screenshot]({{ site.baseurl }}/assets/images/IFTTT_tut_IFtoWaylay_taskview2log.JPG)   
+> Email received in inbox:
+> ![IFTTT_tut_IFtoWaylay_alertEmail screenshot]({{ site.baseurl }}/assets/images/IFTTT_tut_IFtoWaylay_alertEmail.JPG)   
 #Concluding
 
-Coming soon!
+As you can see, Waylay has much higher flexibility than IFTTT, and you don't have to use them exclusively. A simple user-friendly recipe can trigger a complex Waylay task. 
+(We used a very simple template in this post, but you can create however complex template you wish, the sky is the limit!)   
+   
+Click the Start a Free Trial button on [our website][waylayio] to request an account!
 
 [waylayio]:       https://www.waylay.io/
 [waylaydocs]:     https://docs.waylay.io/
