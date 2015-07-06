@@ -81,9 +81,9 @@ You will find your Waylay API key and secret under Waylay dashboard-profile-API 
 Keep them available as you move on to the IF web application to create recipes.   
 
 ##Creating IF recipes
-We're using the Stocks channel to trigger our Maker action channel in two separate recipes: 
-1. price drops below 
-2. price drops by percentage
+We're using the Stocks channel to trigger our Maker action channel in two separate recipes:   
+1. price drops below   
+2. price drops by percentage   
 ![IFTTT_tut_IFtoWaylay_step2_chooseTrigger screenshot]({{ site.baseurl }}/assets/images/IFTTT_tut_IFtoWaylay_step2_chooseTrigger.JPG)   
 
 For each of them, do the respective settings below:     
@@ -92,7 +92,7 @@ For each of them, do the respective settings below:
 > ![IFTTT_tut_IFtoWaylay_step5_makeWebRequest screenshot]({{ site.baseurl }}/assets/images/IFTTT_tut_IFtoWaylay_step5_makeWebRequest.JPG)   
    
 And finally we are going to configure the Waylay action channels. Here's where you use the Waylay APIKey and APISecret you retrieved earlier.   
-Noted that the domain will be the domain you are using, app.waylay.io is just what I'm using for testing.
+Noted that the domain will be the domain you are using, app.waylay.io is just what I'm using for testing.   
 Enter the below in the respective recipes:   
 
 > URL: https://data.waylay.io/messages?domain={app.waylay.io}&apiKey={apiKey}&apiSecret={apiSecret}   
@@ -104,11 +104,13 @@ Enter the below in the respective recipes:
 > ![IFTTT_tut_IFtoWaylay_step6_makeractionsettings screenshot]({{ site.baseurl }}/assets/images/IFTTT_tut_IFtoWaylay_step6_makeractionsettings.JPG)   
 
 Now whenever the recipes are triggered, the web requests sent to the Waylay Broker will change the states of the sensors in our task accordingly.   
-When price falls below 100 and percentage drop is above 5, our Email Actuator on Waylay is triggered. (We're using test data in the screenshots below)
+When price falls below 100 and percentage drop is above 5, our Email Actuator on Waylay is triggered. (We're using test data in the screenshots below)   
 > ![IFTTT_tut_IFtoWaylay_taskview1 screenshot]({{ site.baseurl }}/assets/images/IFTTT_tut_IFtoWaylay_taskview1.JPG)   
 > ![IFTTT_tut_IFtoWaylay_taskview2log screenshot]({{ site.baseurl }}/assets/images/IFTTT_tut_IFtoWaylay_taskview2log.JPG)   
-> Email received in inbox:
+   
+> Email received in inbox:   
 > ![IFTTT_tut_IFtoWaylay_alertEmail screenshot]({{ site.baseurl }}/assets/images/IFTTT_tut_IFtoWaylay_alertEmail.JPG)   
+
 #Concluding
 
 As you can see, Waylay has much higher flexibility than IFTTT, and you don't have to use them exclusively. A simple user-friendly recipe can trigger a complex Waylay task. 
