@@ -9,6 +9,7 @@ categories: integration
 
 #Integration   
 In this blog post, you will learn how to connect between Waylay and IF in two separate chapters:
+
 * From Waylay to IF
 * From IF to Waylay
 
@@ -45,6 +46,7 @@ Enter the eventName (e.g. waylay_test) and the values you wish to have.
 > ![IFTTT_tut_template screenshot]({{ site.baseurl }}/assets/images/IFTTT_tut_template.JPG)   
    
 We need the IF account's secretKey for the actuator to be able to connect to IF. Find your secret key at [maker] page.   
+
 > ![IFTTT_tut_maker screenshot]({{ site.baseurl }}/assets/images/IFTTT_tut_maker.JPG)   
    
 And enter the secretKey in the actuator's properties field:   
@@ -52,6 +54,7 @@ And enter the secretKey in the actuator's properties field:
 > ![IFTTT_tut_secretKey screenshot]({{ site.baseurl }}/assets/images/IFTTT_tut_prop_secretkey.JPG)   
    
 If you haven't already, connect the switch sensor node to the IFTTTMaker actuator node and change the following under advance settings on the actuator node:   
+
 > Trigger on state change: off -> on   
 
 You are now ready to trigger some IF recipes from Waylay!   
@@ -69,9 +72,7 @@ We will require two sensors in a template, one receiving the closing price and t
 Place two streamDataSensor onto the white space and enter the following properties:   
 
 > name: streamSensor_stockPrice, parameter: closingPrice_appleStock, threshold: 100   
-
 > name: streamingSensor_percentageDrop, parameter: percentageDrop_appleStock, threshold: 5   
-
 > ![IFTTT_tut_IFtoWaylay_createTemplate_sensors screenshot]({{ site.baseurl }}/assets/images/IFTTT_tut_IFtoWaylay_createTemplate_sensors.JPG)   
 
 Then connect both of the sensors to an AND Gate, changing the triggering states to "Below" for price and "Above" for percentage drop.   
