@@ -61,6 +61,8 @@ You are now ready to trigger some IF recipes from Waylay!
 Simply go under the debug tab and RUN the template! Click on the "Test data" button, and push "on" to switch_1 node.   
 The result is switch_1 node changing state from OFF to ON and therefore triggering the IFTTTMaker actuator.   
 
+> ![IFTTT_tut_emailSent screenshot]({{ site.baseurl }}/assets/images/IFTTT_tut_emailSent.JPG)  
+
 #From IF to Waylay
 
 There are so many ways to use Waylay from another application as Waylay provides a huge [RESTful API]:   
@@ -145,5 +147,7 @@ Click the Start a Free Trial button on [our website][waylayio] to request an acc
 [RESTful API]:    http://docs.waylay.io/Waylay-REST-API-documentation.html
 
 #h1   
+
 ##h2   
+
 ###h3   
