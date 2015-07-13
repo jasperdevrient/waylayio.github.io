@@ -146,8 +146,8 @@ Click the Start a Free Trial button on [our website][waylayio] to request an acc
 [maker]:          https://ifttt.com/maker
 [RESTful API]:    http://docs.waylay.io/Waylay-REST-API-documentation.html
 
-#h1   
+# h1   
 
-##h2   
+## h2   
 
-###h3   
+### h3   
