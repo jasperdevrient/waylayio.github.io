@@ -63,8 +63,8 @@ The result is switch_1 node changing state from OFF to ON and therefore triggeri
 
 #From IF to Waylay
 
-There are so many ways to use Waylay from another application as Waylay provides a huge [REST API]:   
-You can push data into a resource, create sensors and actuators, create templates, make tasks out of templates, and more via the [REST API]!   
+There are so many ways to use Waylay from another application as Waylay provides a huge [RESTful API]:   
+You can push data into a resource, create sensors and actuators, create templates, make tasks out of templates, and more via the [RESTful API]!   
 In this chapter, we will have two IF recipes pushing data into Waylay broker, and in the end sending us an email notifying us that Apple stock has fallen 5% and is now below $100.   
 
 ##Creating a template and resource
@@ -143,3 +143,7 @@ Click the Start a Free Trial button on [our website][waylayio] to request an acc
 [waylaydocs]:     https://docs.waylay.io/
 [maker]:          https://ifttt.com/maker
 [RESTful API]:    http://docs.waylay.io/Waylay-REST-API-documentation.html
+
+#h1   
+##h2   
+##h3   
