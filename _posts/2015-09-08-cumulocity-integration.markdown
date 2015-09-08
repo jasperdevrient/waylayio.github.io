@@ -105,31 +105,6 @@ if(token !== undefined && source !== undefined)
 
 Change ‘States’ , ‘Properties’ and ‘Raw data’ according to bottom picture.
 
-
-Create a file named `motion.json` with the following contents. Don't forget to
-replace `yourdevice`, `yourenv.waylay.io`, `your_waylay_api_key` and `your_waylay_api_secret`
-with the appropriate values.
-
-{% highlight json %}
-{% raw %}
-{
-  "eventName": "waylay/motion",
-  "url": "https://data.waylay.io/resources/yourdevice?domain=yourenv.waylay.io",
-  "requestType": "POST",
-  "auth": {
-    "username": "your_waylay_api_key",
-    "password": "your_waylay_api_secret"
-  },
-  "json": {
-        "name": "{{SPARK_EVENT_NAME}}",
-        "value": "{{SPARK_EVENT_VALUE}}",
-        "source": "{{SPARK_CORE_ID}}"
-  },
-  "mydevices": true
-}
-{% endraw %}
-{% endhighlight %}
-
 ![Cumulocity Dashboard]({{ site.baseurl }}/assets/images/cumulocity_options.png)
 
 If you done both of steps click ‘Update’ on the top and get designer screen from main menu of waylay.
