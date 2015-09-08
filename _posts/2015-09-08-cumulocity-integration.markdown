@@ -59,7 +59,7 @@ And add a property named ‘Cumulocity_Key’ with your Cumulocity key.
 
 Now choose ‘Create’ ‘+ Sensor’ from top menu.
 
-Replace all code with bottom one
+Replace all code with bottom one, don't forget to change API link with your own.
 
 {% highlight javascript linenos %}
 var token = options.globalSettings.Cumulocity_Key;
@@ -73,7 +73,7 @@ if(token !== undefined && source !== undefined)
 {
 
      var options = {
-        url: 'http://suathh.cumulocity.com/measurement/measurements/series?dateTo='+dateTo+'&source='+source+'&dateFrom='+dateFrom,
+        url: 'http://yourUserName.cumulocity.com/measurement/measurements/series?dateTo='+dateTo+'&source='+source+'&dateFrom='+dateFrom,
 
         headers: {
             Authorization: "Basic "+ token,
@@ -130,3 +130,7 @@ Source parameter is ID of device that you can find it when you click the device 
 ![Cumulocity Dashboard]({{ site.baseurl }}/assets/images/cumulocity_deviceID.png)
 
 After you finish entering mail properties you are ready to learn your device’s signal mesuarement’s via mail over waylay platform !
+
+[here]:       http://cumulocity.com/about/
+[Measurement API]:     http://www.cumulocity.com/guides/reference/measurements/
+[ISO 8601]:        https://en.wikipedia.org/wiki/ISO_8601
