@@ -99,6 +99,8 @@ if(token !== undefined && source !== undefined)
 
 {% endhighlight %}
 
+You can find this sensor's code on Github too. [Cumulocity Sensor](https://github.com/waylayio/Sensors/blob/master/carriotsGetDataStream)
+
 Change ‘States’ , ‘Properties’ and ‘Raw data’ according to bottom picture.
 
 ![Cumulocity Dashboard]({{ site.baseurl }}/assets/images/cumulocity_options.png)
