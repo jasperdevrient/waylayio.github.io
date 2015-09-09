@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Rule your devices with waylay and Cumulocity"
+title:      "Control your devices with waylay and Cumulocity"
 date:       2015-09-08 17:19:06
 categories: integration
 ---
