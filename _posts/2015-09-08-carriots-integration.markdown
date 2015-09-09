@@ -85,9 +85,10 @@ request.get(options, callback);
 
 This code created according to Data Stream API of Carriots you can reach to documentation from [Carriots Data Management](https://www.carriots.com/documentation/api/data_management)
 
-![Carriots Device]({{ site.baseurl }}/assets/images/carriots_options.png)
 
-If you are done with code now you have to change properties on right panel
+If you are done with code now you have to change properties on right panel like in bottom picture.
+
+![Carriots Device]({{ site.baseurl }}/assets/images/carriots_options.png)
 
 When you are done click ‘Upload’ on top and open Designer.
 
@@ -103,6 +104,6 @@ Then enter properties of sensor.
 
 On Carriots sensor property you should enter ‘Id developer’ from devices properties which you can see above pictures. You can find it by clicking ‘show’ on device.
 
-![Carriots Device]({{ site.baseurl }}/assets/images/carriots_device.png)
+![Carriots Device]({{ site.baseurl }}/assets/images/carriots_deviceID.png)
 
 After entering your 'Id developer' to sensor properties you can reach your device's data stream via mail over waylay.
