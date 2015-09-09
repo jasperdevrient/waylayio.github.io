@@ -4,16 +4,11 @@ title:      "Rule your devices with waylay and Cumulocity"
 date:       2015-09-08 17:19:06
 categories: integration
 ---
-Hi, this post including waylay platfrom integration with Cumulocity platform.
+Hi everybody, in this post we will focus on connecting devices and their data with waylay and Cumulocity platform.
 
 #Cumulocity
 
 Cumulocity is a cloud based development platform, you can access more information in [here](http://cumulocity.com/about/).
-
-#Integration
-
-This blog post will show you how you can connect a device and data of it from Cumulocity to waylay.
-
 
 #What you need
 
@@ -24,18 +19,19 @@ This blog post will show you how you can connect a device and data of it from Cu
 #Entering Cumulocity Platform
 
 Now open your browser and go to below link
+
 'https://yourUserName.cumulocity.com/apps/administration/index.html#/'
+
 Enter the username that you used when creating Cumulocity account instead of ‘yourUserName’ on link.
 
 You will reach Cumulocity dashboard
 
 ![Cumulocity Dashboard]({{ site.baseurl }}/assets/images/cumulocity_dashboard.png)
 
-This is how the connections are set up
 
 Now we have to create a device.
 
-If you have one of these devices on the list [Certificated Devices](https://www.cumulocity.com/dev-center/) you can add them too .
+If you have one of these devices on the list [Certificated Devices](https://www.cumulocity.com/dev-center/) you can add one of them too .
 
 ![Cumulocity Dashboard]({{ site.baseurl }}/assets/images/cumulocity_dashboard2.png)
 
@@ -49,7 +45,7 @@ On the Devicemanagament page choose ‘All devices’ there will be a device nam
 Now we have a device and we will use waylay to get signal measurements of this devices.
  You can learn more about [Measurement API](http://www.cumulocity.com/guides/reference/measurements/) by clicking.
 
-Then connect your waylay account and click 'Your User Name' --> Profile
+Then connect your waylay account and click 'Your User Name' --> Profile on top menu.
 
 ![Cumulocity Dashboard]({{ site.baseurl }}/assets/images/cumulocity_waylay.png)
 
@@ -57,9 +53,9 @@ Choose ‘Global settings’ on left panel.
 
 And add a property named ‘Cumulocity_Key’ with your Cumulocity key.
 
-Now choose ‘Create’ ‘+ Sensor’ from top menu.
+Now choose ‘Create’ --> ‘+ Sensor’ from top menu.
 
-Replace all code with bottom one, don't forget to change API link with your own.
+Replace all code with bottom one, don't forget to change 'yourUserName' part on API link with your own.
 
 {% highlight javascript linenos %}
 var token = options.globalSettings.Cumulocity_Key;
@@ -121,12 +117,15 @@ Now we have to modify properties.
 
 In Cumulocity time/date format is [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
 Let’s enter properties.
+
 dateTo: 2015-09-08T01:55:28Z
+
 dateFrom : 2014-09-08T01:55:28Z
+
 source: 10200
 
-Source parameter is ID of device that you can find it when you click the device it is on the bottom.
+Source parameter is ID of device that you can find it when you click the device ID is in the bottom.
 
 ![Cumulocity Dashboard]({{ site.baseurl }}/assets/images/cumulocity_deviceID.png)
 
-After you finish entering mail properties you are ready to learn your device’s signal mesuarement’s via mail over waylay platform !
+After entering mail properties you are ready to learn your device’s signal mesuarement’s via mail over waylay platform !
