@@ -35,7 +35,7 @@ This is how the connections are set up
 
 Now we have to create a device.
 
-If you have one of these devices on the list [Certificated Devices][https://www.cumulocity.com/dev-center/] you can add them too .
+If you have one of these devices on the list [Certificated Devices](https://www.cumulocity.com/dev-center/) you can add them too .
 
 ![Cumulocity Dashboard]({{ site.baseurl }}/assets/images/cumulocity_dashboard2.png)
 
@@ -47,7 +47,7 @@ Choose Devicemanagament from list on the top right.
 On the Devicemanagament page choose ‘All devices’ there will be a device named ‘A Demo Device’ click that and customize device according to your pleasure and click ‘Save the changes’ at bottom.
 
 Now we have a device and we will use waylay to get signal measurements of this devices.
- You can learn more about [Measurement API][http://www.cumulocity.com/guides/reference/measurements/] by clicking.
+ You can learn more about [Measurement API](http://www.cumulocity.com/guides/reference/measurements/) by clicking.
 
 Then connect your waylay account and click 'Your User Name' --> Profile
 
@@ -119,7 +119,7 @@ Now we have to modify properties.
 
 ![Cumulocity Dashboard]({{ site.baseurl }}/assets/images/cumulocity_properties.png)
 
-In Cumulocity time/date format is [ISO 8601][https://en.wikipedia.org/wiki/ISO_8601]
+In Cumulocity time/date format is [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
 Let’s enter properties.
 dateTo: 2015-09-08T01:55:28Z
 dateFrom : 2014-09-08T01:55:28Z
@@ -130,7 +130,3 @@ Source parameter is ID of device that you can find it when you click the device 
 ![Cumulocity Dashboard]({{ site.baseurl }}/assets/images/cumulocity_deviceID.png)
 
 After you finish entering mail properties you are ready to learn your device’s signal mesuarement’s via mail over waylay platform !
-
-[here]:       http://cumulocity.com/about/
-[Measurement API]:     http://www.cumulocity.com/guides/reference/measurements/
-[ISO 8601]:        https://en.wikipedia.org/wiki/ISO_8601
