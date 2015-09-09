@@ -8,7 +8,7 @@ Hi, this post including waylay platfrom integration with Cumulocity platform.
 
 #Cumulocity
 
-Cumulocity is a cloud based development platform, you can access more information in [here][http://cumulocity.com/about/].
+Cumulocity is a cloud based development platform, you can access more information in [here](http://cumulocity.com/about/).
 
 #Integration
 
