@@ -8,7 +8,7 @@ Hi, this is our first more technical blog post, you can expect more soon.
 
 #Particle/Spark Core
 
-So what us a Particle Core (previously called Spark Core)?
+So what is a Particle Core (previously called Spark Core)?
 This is what their website mentions:
 
 > Spark offers a suite of hardware and software tools to help you
