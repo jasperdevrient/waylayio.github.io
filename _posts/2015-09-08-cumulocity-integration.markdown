@@ -4,50 +4,51 @@ title:      "Control your devices with waylay and Cumulocity"
 date:       2015-09-08 17:19:06
 categories: integration
 ---
-Hi everybody, in this post we will focus on connecting devices and their data with waylay and Cumulocity platform.
+Hi everybody, in this post we will focus on connecting devices to Cumulocity and forwarding the data to Waylay.
 
 #Cumulocity
 
-Cumulocity is a cloud based development platform, you can access more information in [here](http://cumulocity.com/about/).
+[Cumulocity](http://cumulocity.com) is a cloud based development platform. This is what their website mentions:
+
+> Cumulocity lets you build your Internet of Things applications instantly. Design new services and new models for your business!
 
 #What you need
 
 * A waylay subscription
 * A Cumulocity subscription
-* An abstract or real devices to use in Cumulocity platform.
+* An abstract or real device to connect to the Cumulocity platform.
 
-#Entering Cumulocity Platform
+#Logging in to the Cumulocity Platform
 
-Now open your browser and go to below link
+Now open your browser and go to the Cumulocity administration tool.
 
-'https://yourUserName.cumulocity.com/apps/administration/index.html#/'
+`https://yourUserName.cumulocity.com/apps/administration/index.html#/`
 
-Enter the username that you used when creating Cumulocity account instead of ‘yourUserName’ on link.
+Replace `yourUserName` with the username that you used when creating Cumulocity account.
 
-You will reach Cumulocity dashboard
+You should end up at the Cumulocity dashboard
 
 ![Cumulocity Dashboard]({{ site.baseurl }}/assets/images/cumulocity_dashboard.png)
 
-
 Now we have to create a device.
 
-If you have one of these devices on the list [Certificated Devices](https://www.cumulocity.com/dev-center/) you can add one of them too .
+If you have one of these devices on the [Certificated Devices list](https://www.cumulocity.com/dev-center/) you can add it.
 
 ![Cumulocity Dashboard]({{ site.baseurl }}/assets/images/cumulocity_dashboard2.png)
 
 Choose Devicemanagament from list on the top right.
 
-#Choosing Device
+#Configuring your device
 
 ![Cumulocity Dashboard]({{ site.baseurl }}/assets/images/cumulocity_device.png)
 On the Devicemanagament page choose ‘All devices’ there will be a device named ‘A Demo Device’ click that and customize device according to your pleasure and click ‘Save the changes’ at bottom.
 
 Now we have a device and we will use waylay to get signal measurements of this devices.
- You can learn more about [Measurement API](http://www.cumulocity.com/guides/reference/measurements/) by clicking.
+For details check the [Cumulocity Measurement API documentation page](http://www.cumulocity.com/guides/reference/measurements/).
 
-Then connect your waylay account and click 'Your User Name' --> Profile on top menu.
+Now go to your Waylay account and click 'Your User Name' --> Profile on top menu.
 
-![Cumulocity Dashboard]({{ site.baseurl }}/assets/images/cumulocity_waylay.png)
+![Waylay Dashboard]({{ site.baseurl }}/assets/images/cumulocity_waylay.png)
 
 Choose ‘Global settings’ on left panel.
 
@@ -130,4 +131,4 @@ Source parameter is ID of device that you can find it when you click the device 
 
 ![Cumulocity Dashboard]({{ site.baseurl }}/assets/images/cumulocity_deviceID.png)
 
-After entering mail properties you are ready to learn your device’s signal mesuarement’s via mail over waylay platform !
+After entering the mail properties and starting the task you should be receiving your device’s signal mesuarement’s over mail!
