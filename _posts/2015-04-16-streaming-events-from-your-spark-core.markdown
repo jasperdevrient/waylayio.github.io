@@ -11,7 +11,7 @@ Hi, this is our first more technical blog post, you can expect more soon.
 So what is a Particle Core (previously called Spark Core)?
 This is what their website mentions:
 
-> Spark offers a suite of hardware and software tools to help you
+> Particle offers a suite of hardware and software tools to help you
 > prototype, scale, and manage your Internet of Things products.
 
 Currently, their main offering is a hardware device similar to an Arduino but way smaller. It is fully wifi enabled, can be programmed over the web and comes with the needed libraries to connect it to the Spark cloud infrastructure. Have a look at their [documentation][sparkdocs] if you want to dig a bit deeper.
