@@ -1,14 +1,14 @@
 ---
 layout:     post
-title:      "Streaming events from your Spark/Particle core to Waylay"
+title:      "Streaming events from your Particle photon/core to Waylay"
 date:       2015-04-16 14:59:06
 categories: integration
 ---
 Hi, this is our first more technical blog post, you can expect more soon.
 
-#Particle/Spark Core
+#Particle photon / Spark Core
 
-So what is a Particle Core (previously called Spark Core)?
+So what is a Particle Photon/Core (previously called Spark Core)?
 This is what their website mentions:
 
 > Particle offers a suite of hardware and software tools to help you
@@ -25,7 +25,7 @@ motion is detected.
 
 #What you need
 
-* A Spark Core
+* A Particle Photon or Core
 * A PIR sensor, we are using a [Parallax PIR Sensor][parallax-pir]
 * Some electrical wires
 * Credentials to log in to the spark.io build environment
