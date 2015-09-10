@@ -52,11 +52,11 @@ Now go to your Waylay account and click 'Your User Name' --> Profile on top menu
 
 Choose ‘Global settings’ on left panel.
 
-And add a property named ‘Cumulocity_Key’ with your Cumulocity key.
+And add a property named `Cumulocity_Key` with your Cumulocity key.
 
 Now choose ‘Create’ --> ‘+ Sensor’ from top menu.
 
-Replace all code with bottom one, don't forget to change 'yourUserName' part on API link with your own.
+Replace all code with bottom one, don't forget to change `yourUserName` part on API link with your own.
 
 {% highlight javascript linenos %}
 var token = options.globalSettings.Cumulocity_Key;
@@ -102,33 +102,32 @@ if(token !== undefined && source !== undefined)
 
 You can find this sensor's code on Github too. [Cumulocity Sensor](https://github.com/waylayio/Sensors/blob/master/cumulocityGetMeasurements)
 
-Change ‘States’ , ‘Properties’ and ‘Raw data’ according to bottom picture.
+Change ‘States’ , ‘Properties’ and ‘Raw data’ according to the below picture.
 
 ![Cumulocity Dashboard]({{ site.baseurl }}/assets/images/cumulocity_options.png)
 
-If you done both of steps click ‘Update’ on the top and get designer screen from main menu of waylay.
+If you did both of steps click ‘Save’ on the top and go to the designer from main waylay menu.
 
 Now select sensor that you create and drop it on designer and add an actuator.
 
-I choose mail actuator it is looking like this.
+I choose the mail actuator. You should end up with something like this.
 
 ![Cumulocity Dashboard]({{ site.baseurl }}/assets/images/cumulocity_sensor.png)
 
-Now we have to modify properties.
+Now we have to modify the mail actuator properties.
 
 ![Cumulocity Dashboard]({{ site.baseurl }}/assets/images/cumulocity_properties.png)
 
-In Cumulocity time/date format is [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+Cumulocity uses the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time/date format.
+
 Let’s enter properties.
 
-dateTo: 2015-09-08T01:55:28Z
+* dateTo: 2015-09-08T01:55:28Z
+* dateFrom : 2014-09-08T01:55:28Z
+* source: 10200
 
-dateFrom : 2014-09-08T01:55:28Z
-
-source: 10200
-
-Source parameter is ID of device that you can find it when you click the device ID is in the bottom.
+The source parameter is ID of device which you can find on the Cumulocity device page.
 
 ![Cumulocity Dashboard]({{ site.baseurl }}/assets/images/cumulocity_deviceID.png)
 
-After entering the mail properties and starting the task you should be receiving your device’s signal mesuarement’s over mail!
+After entering the mail properties and starting the task you should be receiving your device’s signal measurements by mail.
