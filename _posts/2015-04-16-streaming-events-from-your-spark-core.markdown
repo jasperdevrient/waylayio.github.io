@@ -1,15 +1,14 @@
 ---
 layout:     post
-title:      "Streaming events from your Spark core to Waylay"
+title:      "Streaming events from your Spark/Particle core to Waylay"
 date:       2015-04-16 14:59:06
 categories: integration
 ---
 Hi, this is our first more technical blog post, you can expect more soon.
 
-#Spark Core
+#Particle/Spark Core
 
-So what us a Spark Core? Some of you might have though about Apache Spark when
-reading the blog title but we are talking about [Spark.io][sparkio].
+So what us a Particle Core (previously called Spark Core)?
 This is what their website mentions:
 
 > Spark offers a suite of hardware and software tools to help you
