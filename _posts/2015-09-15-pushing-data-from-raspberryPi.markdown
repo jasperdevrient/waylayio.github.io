@@ -1,11 +1,11 @@
 ---
 layout:     post
-title:      "waylay Integration with Raspberry Pi"
+title:      "Integration with Raspberry Pi"
 date:       2015-09-15 10:19:06
 categories: integration
 ---
 
-That is easy! check out this [repo] [repo]. There you will find a script that uses stream REST calls of waylay. Mix this with stream sensors and you have e2e IoT use case in not time. Here is the [video][video]
+That is easy! check out this [repo] [repo]. There you will find a script that uses stream REST calls of waylay. Mix this with stream sensors and you have e2e IoT use case in no time. Here is the [video][video]
 So, let's check the script that pushes the data:
 
 {% highlight javascript linenos %}
