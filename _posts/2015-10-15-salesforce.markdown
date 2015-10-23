@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Salesforce integration using jsforce package - example of "
+title:      "Salesforce integration using jsforce package"
 date:       2015-10-15 10:19:06
 categories: integration
 ---
