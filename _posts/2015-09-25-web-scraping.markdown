@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Turning internet into sensors using web scraping"
+title:      "Turning Internet into waylay sensors using web scraping"
 date:       2015-10-01 10:19:06
 categories: integration
 ---
