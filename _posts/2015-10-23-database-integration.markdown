@@ -92,7 +92,8 @@ As you can see, here I used global settings to fetch database settings. I also u
 Once you define your sensor, just make sure you define in the raw data all database columns that this sensor will return. Again, this is a good practise, it is not really needed, but if you want someone else to use this sensor, it is always good to tell what is the info that comes out of this sensor. More over, if you want to use autocompletion feature of the UI, you must define it anyway.
 
 #So I have many tables, does it mean I need to define all of them as sensors?
-Yes, if you want to model assets, users, customers, _it makes sense_ to create all these sensors, since your business guy will be able visually to understand what is going on. But, we also made platform to be flexible enough, and in the Belgium spirit, we also allow you do just pass as the input argument any query you like and return back any raw data you find interesting. If that is what you want to do, go ahead and create one generic DB sensor, and use node labels to describe what is going on.
+
+Yes indeed. If you design logical blocks in your system such as assets, users, customers, _it makes sense_ to create all of them as sensors, since your business guy, as everyone else, will be able to visually understand what is going on. But, we also made platform to be flexible enough, and in the Belgium spirit, we also allow you do just pass as the input argument any query you like and return back any raw data you find interesting. If that is what you want to do, go ahead and create one generic DB sensor, and use node labels to describe what is going on.
 
 
 [waylaydocs]:     http://docs.waylay.io/Plugin-API.html
