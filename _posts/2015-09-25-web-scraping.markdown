@@ -5,7 +5,7 @@ date:       2015-10-01 10:19:06
 categories: integration
 ---
 
-Belgiums love holiday! So we decided to create a sensor that tells you wheather there is a holiday in Belgium. For that we used one web site [web] that has a html table of holidays for Belgium. In order to turn this into a sensor, we used some little help from _cheerio_ library. So, let's see how does it work?
+Belgiums love holiday! So we decided to create a sensor that tells you wheather there is a holiday in Belgium. For that we used one web [site] [web] that has a html table of the holidays in Belgium. In order to turn this into a sensor, we used some little help from _cheerio_ library. So, let's see how does it work?
 
 {% highlight javascript linenos %}
 var url = "http://www.wettelijke-feestdagen.be/";
