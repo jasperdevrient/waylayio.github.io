@@ -5,7 +5,7 @@ date:       2015-12-23 10:19:06
 categories: integration
 ---
 
-Recently we discovered [webscript.io] [webscripts]. It is really a great site, it lets you run lua code in the cloud. Note that lua scripts allow you to use general settings, similar to waylay, but also allow you to pass input arguments and forms. That also means that you can create a webhook from another system, that posts data into the webhooks script (which is webscript), and then inside this lua script you can call a POST method towards the other system. For some people this might sound as a heresy, but if for instance you need to do a payload transformation before calling our broker, this might be all you need. Since LoRa and Sigfox are low volume notifications, you might as well be good with this even in the production. So let's see one webscript that goes to our bridge: 
+Recently we discovered [webscript.io] [webscripts]. It is really a great site, it lets you run lua code in the cloud. Note that lua scripts allow you to use general settings, similar to waylay, but also allow you to pass input arguments and forms. That also means that you can create a webhook from another system, that posts data into the webhooks script (which is webscript in our example), and then inside this lua script you can call a POST method towards the other system. For some people this might sound as a heresy, but if for instance you need to do a payload transformation before calling our broker, this might be all you need. Since LoRa and Sigfox are low volume notifications, you might as well be good with this even in the production. So let's see one webscript that goes to our bridge: 
 
 {% highlight javascript linenos %}
 local key = 'WAYLAY_KEY'
