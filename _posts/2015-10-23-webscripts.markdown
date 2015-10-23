@@ -12,10 +12,10 @@ local key = 'WAYLAY_KEY'
 local password ='WAYLAY_TOKEN'
 
 local data = {
-			temperature = 34,
-    	resource = 'deviceX',
-    	domain = 'playground.waylay.io'
-		}
+		temperature = 34,
+    		resource = 'deviceX',
+    		domain = 'playground.waylay.io'
+	}
 
 local response = http.request(
 	{
