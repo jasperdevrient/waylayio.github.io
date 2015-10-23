@@ -8,20 +8,13 @@ Hi everybody, in this post we will show how to turn any database into a waylay s
 
 #Turning database into a sensor
 
-Waylay comes with sandboxed nodejs VM in which scripts get executed, similar to AWS lambda. Sandboxed VM's come with number of packages that are pre-installed. 
-You can simply access them from the script, no need to declare them. Feel free to check the Waylay [documentation][waylaydocs] in order to see complete list.
-In this blog we will use native Microsoft SQL connector.
+Waylay comes with sandboxed nodejs VM in which scripts get executed, similar to AWS lambda. Sandboxed VM's come with number of packages that are pre-installed. You can simply access them from the script, no need to declare them. Feel free to check the Waylay [documentation][waylaydocs] in order to see complete list. In this blog we will use native Microsoft SQL connector.
 
 #Integration
 
-In waylay we don't talk about connectors, but rather about sensors and actuators. In that respect, you can think of the database record as a sensor: e.g. 
-_Customer_, or an actuator: e.g. database log entry (_Incident_ etc). More about the philosophy behind our concepts you can find here [blogpost][blog].
-In this example, I will search for a device in the database and send back the record item as the raw data - if the record is found. I will also
-use states "Found"/"Not Found" to tell the user of this sensor whether the record has been found in the database. This can be handy in case 
-you use the conditional execution of the sensors feature, where the outcome of one sensor can trigger execution of the next sensor. For instance, you may want 
-to implement a use case where the smart meter collection triggers search in the ERP database, after which an e-mail needs to be send to the user of this meter 
-(while the e-mail address is in the ERP database). In this example _"Found"_ state of the ERP sensors would trigger e-mail actuator, and the e-mail address itself 
-would come from the raw data of the same sensor. So, let's see the code:
+In waylay we don't talk about connectors, but rather about sensors and actuators. In that respect, you can think of the database record as a sensor: e.g.  _Customer_, or an actuator: e.g. database log entry (_Incident_ etc). More about the philosophy behind our concepts you can find here [blogpost][blog].
+In this example, I will search for a device in the database and send back the record item as the raw data - if the record is found. I will also use states "Found"/"Not Found" to tell the user of this sensor whether the record has been found in the database. This can be handy in case  you use the conditional execution of the sensors feature, where the outcome of one sensor can trigger execution of the next sensor [video link][video]. For instance, you may want to implement a use case where the smart meter collection triggers search in the ERP database, after which an e-mail needs to be send to the user of this meter 
+(while the e-mail address is in the ERP database). In this example _"Found"_ state of the ERP sensors would trigger e-mail actuator, and the e-mail address itself  would come from the raw data of the same sensor. So, let's see the code:
 
 {% highlight javascript linenos %}
 
@@ -104,5 +97,6 @@ Yes, if you want to model assets, users, customers, _it makes sense_ to create a
 
 [waylaydocs]:     http://docs.waylay.io/Plugin-API.html
 [blog]: http://www.waylay.io/waylay-engine-rules-engine-rule/
+[video]: https://www.youtube.com/watch?v=UXQV7voA_u4&list=PLy54mo7VaB1hMsaTA6gVYn2XJSov3dnSK&index=8
 
 
