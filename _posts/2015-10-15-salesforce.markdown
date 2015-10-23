@@ -5,7 +5,7 @@ date:       2015-10-15 10:19:06
 categories: integration
 ---
 
-This example you can find in this [repo] [repo]. In this example we use _jsforce_ package that is available in sandboxed VM and we will create an incident _Event_ in saleforce database. Interestingly, it took me longer to figure out hwo to get tokens than to implement this actuator, which probably is not that suprising for people who are into ERP business. Therefore, here is the link [salesforce] [salesforce] that describes how to generate the access token. Code itself should be easy to read:
+This actuator you can later find in this [repo] [repo]. In this example we use _jsforce_ package that is available in the sandboxed VM. We will create an incident _Event_ in the saleforce database. Interestingly, it took me longer to figure out how to get tokens than to implement this actuator, which probably is not that suprising for people who are into ERP business. So, here is the link [salesforce] [salesforce] that describes how to generate the access token (note that the final token is actually a password + token together?). That you will need to put in the global settings (see the code below). Code should be easy to read:
 
 
 {% highlight javascript linenos %}
