@@ -5,7 +5,7 @@ date:       2015-09-25 10:19:06
 categories: integration
 ---
 
-This example you can find in this [repo] [repo] and it is based on [jira documentation] you can find here [jira]. In this example we uese request package with basic authentication option. It is almost 1to1 translation of the JIRA documentaion. Not more than 1 minute job. have a look:
+This example you can find in this [repo] [repo] and it is based on documentation that you can find here [jira] [jira]. In this example we use _request_ package with basic authentication option. It is almost 1to1 translation of the JIRA documentation. Not more than 1 minute job, have a look:
 
 {% highlight javascript linenos %}
 var username =  options.globalSettings.JIRA_USER;
