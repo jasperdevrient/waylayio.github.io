@@ -26,6 +26,12 @@ local response = http.request(
 	}).content
 {% endhighlight %}
 
+
+Once you are done, you can use all goodies of waylay, this is a template with temperature crossing:
+![Lora use case with temperature crossing]({{ site.baseurl }}/assets/images/lora.png)
+
 What you can see from here is that the _data_ struct can be indeed comming from another system. In case of LoRa, this is the place where you would do XML transformation. I will check if we are allowed to show the actuall code, so stay tunned!
+
+
 
 [webscripts]: https://www.webscript.io
