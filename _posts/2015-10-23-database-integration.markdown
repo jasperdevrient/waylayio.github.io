@@ -44,7 +44,7 @@ try {
     meterNumber = waylayUtil.getRawData(options, options.requiredProperties.meterNumber);
 } catch(err){
     console.log("try to fetch meter from the input argument");
-    meterNumber = options.requiredProperties.meterNumber || options.node.RESOURCE || options.task.RESOURCE; 
+    meterNumber = options.requiredProperties.meterNumber || waylayUtil.getResource(options);
 }
 
 if(meterNumber === undefined ){
@@ -94,6 +94,13 @@ if(meterNumber === undefined ){
 }
 
 {% endhighlight %}
+
+As you can see, here I used global settings to fetch database settings. I also used as the input argument a meterInfo, which can either come from the raw data of the other sensor, or as the simple input argument, or if that is missing, also it can come from the resource input (should you wish to use template inout feature). 
+Once you define your sensor, just make sure you define in the raw data all database columns that this sensor will return. Again, this is a good practise, it is not really needed, but if you want someone else to use this sensor, it is always good to tell what is the info that comes out of this sensor. More over, if you want to use autocompletion feature of the UI, you must define it anyway.
+
+#So I have many tables, does it mean I need to define all of them as sensors?
+Yes, if you want to model assets, users, customers, _it makes sense_ to create all these sensors, since your business guy will be able visualy to unerstand what is going on. But, we also made platform to be felxible enough, and in the Belgium spirit, we also allow you do just pass as the inout argument any query you like and retufn back any raw data you find interesting. If that is what you want to do, go ahead and create one generic DB sensor, and use node labels to describe what is going on.
+
 
 [waylaydocs]:     http://docs.waylay.io/Plugin-API.html
 [blog]: http://www.waylay.io/waylay-engine-rules-engine-rule/
