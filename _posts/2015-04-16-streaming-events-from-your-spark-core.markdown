@@ -189,8 +189,8 @@ platform. Feel free to check the Waylay [documentation][waylaydocs] and try out 
 complex scenarios, we are eager to hear about your experiments!
 
 
-[waylayio]:       https://www.waylay.io/
-[waylaydocs]:     https://docs.waylay.io/
+[waylayio]:       http://www.waylay.io/
+[waylaydocs]:     http://docs.waylay.io/
 [sparkio]:        https://www.spark.io/
 [sparkdocs]:      http://docs.spark.io/
 [sparkdev]:       https://build.spark.io
