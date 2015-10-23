@@ -8,7 +8,7 @@ Hi everybody, in this post we will show how to turn any database into a waylay s
 
 #Turning database into a sensor
 
-Waylay comes with sandboxed nodejs VM in which scripts get executed, similar to AWS lambda. Sandboxed VM's come with number of packages that are pre-installed. You can simply access them from the script, no need to declare them. Feel free to check the Waylay [documentation][waylaydocs] in order to see complete list. In this blog we will use native Microsoft SQL connector.
+Waylay comes with sandboxed nodejs VM in which scripts get executed, similar to AWS lambda. Sandboxed VM's come with number of packages that are pre-installed. You can simply access them from the script, no need to declare them. Feel free to check the Waylay [documentation][waylaydocs] in order to see the complete list. In this blog we will use native Microsoft SQL connector.
 
 #Integration
 
