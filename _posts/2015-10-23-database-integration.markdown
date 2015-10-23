@@ -8,16 +8,16 @@ Hi everybody, in this post we will show how to turn any database into a waylay s
 
 #Turning database into a sensor
 
-Waylay comes with sanboxed nodejs VM in which scripts get executed, similar to AWS lambda. Sanboxed VM's come with number of packages that are pre-installed. 
+Waylay comes with sandboxed nodejs VM in which scripts get executed, similar to AWS lambda. Sandboxed VM's come with number of packages that are pre-installed. 
 You can simply access them from the script, no need to declare them. Feel free to check the Waylay [documentation][waylaydocs] in order to see complete list.
 In this blog we will use native Microsoft SQL connector.
 
 #Integration
 
 In waylay we don't talk about connectors, but rather about sensors and actuators. In that respect, you can think of the database record as a sensor: e.g. 
-_Customer_, or an actuator: e.g. database log entry (_Incident_ etc). More about the phylosophy behind our concepts you can find here [blogpost][blog].
-In this example, I will search for a device in the database and send back the record item as the raw data - if ther record is found. I will also
-use states "Found"/"Not Found" to tell the user of this sensor whether ther record has been found in the database. This can be handy in case 
+_Customer_, or an actuator: e.g. database log entry (_Incident_ etc). More about the philosophy behind our concepts you can find here [blogpost][blog].
+In this example, I will search for a device in the database and send back the record item as the raw data - if the record is found. I will also
+use states "Found"/"Not Found" to tell the user of this sensor whether the record has been found in the database. This can be handy in case 
 you use the conditional execution of the sensors feature, where the outcome of one sensor can trigger execution of the next sensor. For instance, you may want 
 to implement a use case where the smart meter collection triggers search in the ERP database, after which an e-mail needs to be send to the user of this meter 
 (while the e-mail address is in the ERP database). In this example _"Found"_ state of the ERP sensors would trigger e-mail actuator, and the e-mail address itself 
@@ -27,7 +27,7 @@ would come from the raw data of the same sensor. So, let's see the code:
 
 /*
  find a customer by meter ID. Since we assume that we first get a meter data and only then search for a customer, assumption is that the
- customer ID needs to be lookup based on the meter sensor. Therefore we are looking at the meterID from the rawData. If the use case was other way arround 
+ customer ID needs to be lookup based on the meter sensor. Therefore we are looking at the meterID from the rawData. If the use case was other way around 
  (first we fetch customer), then we would need first to get a customer and use meterId to find a meter measurements.
 */
 var server = options.globalSettings.DB_HOST;
@@ -95,11 +95,11 @@ if(meterNumber === undefined ){
 
 {% endhighlight %}
 
-As you can see, here I used global settings to fetch database settings. I also used as the input argument a meterInfo, which can either come from the raw data of the other sensor, or as the simple input argument, or if that is missing, also it can come from the resource input (should you wish to use template inout feature). 
+As you can see, here I used global settings to fetch database settings. I also used as the input argument a meterInfo, which can either come from the raw data of the other sensor, or as the simple input argument, or if that is missing, also it can come from the resource input (should you wish to use template input feature). 
 Once you define your sensor, just make sure you define in the raw data all database columns that this sensor will return. Again, this is a good practise, it is not really needed, but if you want someone else to use this sensor, it is always good to tell what is the info that comes out of this sensor. More over, if you want to use autocompletion feature of the UI, you must define it anyway.
 
 #So I have many tables, does it mean I need to define all of them as sensors?
-Yes, if you want to model assets, users, customers, _it makes sense_ to create all these sensors, since your business guy will be able visualy to unerstand what is going on. But, we also made platform to be felxible enough, and in the Belgium spirit, we also allow you do just pass as the inout argument any query you like and retufn back any raw data you find interesting. If that is what you want to do, go ahead and create one generic DB sensor, and use node labels to describe what is going on.
+Yes, if you want to model assets, users, customers, _it makes sense_ to create all these sensors, since your business guy will be able visually to understand what is going on. But, we also made platform to be flexible enough, and in the Belgium spirit, we also allow you do just pass as the input argument any query you like and return back any raw data you find interesting. If that is what you want to do, go ahead and create one generic DB sensor, and use node labels to describe what is going on.
 
 
 [waylaydocs]:     http://docs.waylay.io/Plugin-API.html
