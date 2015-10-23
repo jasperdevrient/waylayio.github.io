@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "waylay Integration with databases using native connections"
+title:      "waylay Integration with database using native connector"
 date:       2015-23-10 17:19:06
 categories: integration
 ---
