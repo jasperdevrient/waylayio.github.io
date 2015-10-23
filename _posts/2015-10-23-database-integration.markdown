@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      "waylay Integration with database using native connector"
-date:       2015-10-23 17:19:06
+date:       2015-10-23 10:19:06
 categories: integration
 ---
 Hi everybody, in this post we will show how to turn any database into a waylay sensor.
