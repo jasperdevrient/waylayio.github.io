@@ -34,8 +34,20 @@ do
    "resetObservations": true,
    "type": "periodic",
    "frequency": 86400000
- }' https://app.api/tasks
+ }' https://app.waylay.io/api/tasks
 done
+{% endhighlight %}
+
+There is another way to do the same, not using resource concept, but as you will see, it is a little bit more complicated. If we look back into this code:
+{% highlight javascript linenos %}
+var meterNumber = options.requiredProperties.meterNumber || waylayUtil.getResource(options)
+{% endhighlight %}
+
+we can see that sensor could also receive input arguments via this property _options.requiredProperties.meterNumber_. So, the other option to start the same task was to actually use the REST call that defines properties on the sensor level:
+{% highlight javascript linenos %}
+curl --user <KEY>:<SECRET> -H "Content-Type:application/json" -X POST -d '{"name": "test", "template": "dailyConsumption", "resource": "meter 1", "start": true, "type": "periodic", "frequency": 86400000, "nodes": [{"name": "meterSensorNode", "properties": {"sensor": {"name": "meterSensor", "version": "1.0.1", "label": "meterSensor_1", "requiredProperties": [{"meterNumber": "1"} ] } } } ] }' https://app.waylay.io/api/tasks
+{% endhighlight %}
+
 
 {% endhighlight %}
 [doc]: http://docs.waylay.io/Tasks-and-Templates.html
