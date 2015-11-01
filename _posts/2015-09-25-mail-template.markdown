@@ -21,7 +21,7 @@ When you associate the sensor with a given resource name, you can specify resour
 _getResource_ call will automatically translate $, $taskId into the runtime resource name. Waylay engine will make sure that correct translation happened. There is another use case where you can use resource concept (stream data), but more about that in the future posts.
 
 
-Once you have defined  
+Once you have created a template you can start it using a REST call [rest link] [rest]. In this example, we call the template _dailyConsumption_ with resource defined as an integer. Once the task is started, this resource name (in this case a number) will be propaget to the sensors. 
 
 {% highlight javascript linenos %}
 for i in {1..100000}
