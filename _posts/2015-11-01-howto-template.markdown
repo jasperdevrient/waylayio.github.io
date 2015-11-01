@@ -6,7 +6,6 @@ categories: integration
 ---
 
 With our visual designer tool you can debug and create new [templates] [doc]. 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/8o6Agbzv2HM?list=PLy54mo7VaB1hMsaTA6gVYn2XJSov3dnSK" frameborder="0" allowfullscreen></iframe>
 
 Using waylay application portal, or via REST [calls] [rest] you instantiate these templates as _tasks_. For instance, if you create a template that gathers smart meter data and sends mail with consumption every Friday, you will instantiate this template for every newly provisioned meter. In this post I will show you the easiest way to create a template that will allow you to instantiate a task with resource name as the only input argument. In order to achieve that, I will create a sensor that as the input argument can take a resource name:
 
@@ -71,3 +70,4 @@ curl --user <KEY>:<SECRET> -H "Content-Type:application/json" -X POST -d
 
 [doc]: http://docs.waylay.io/Tasks-and-Templates.html
 [rest]: http://docs.waylay.io/Waylay-REST-API-documentation.html
+
