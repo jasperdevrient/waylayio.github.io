@@ -45,7 +45,25 @@ var meterNumber = options.requiredProperties.meterNumber || waylayUtil.getResour
 
 we can see that the sensor can also receive the input argumens via property _options.requiredProperties.meterNumber_. So, the other option to start the same task was to use the REST call that defines this property on the sensor level:
 {% highlight javascript linenos %}
-curl --user <KEY>:<SECRET> -H "Content-Type:application/json" -X POST -d '{"name": "test", "template": "dailyConsumption", "resource": "meter 1", "start": true, "type": "periodic", "frequency": 86400000, "nodes": [{"name": "meterSensorNode", "properties": {"sensor": {"name": "meterSensor", "version": "1.0.1", "label": "meterSensor_1", "requiredProperties": [{"meterNumber": "1"} ] } } } ] }' https://app.waylay.io/api/tasks
+curl --user <KEY>:<SECRET> -H "Content-Type:application/json" -X POST -d 
+   '{
+     "name": "test", 
+     "template": "dailyConsumption", 
+     "resource": "meter 1", 
+     "start": true, 
+     "type": "periodic", 
+     "frequency": 86400000, 
+     "nodes": [ {"name": "meterSensorNode", 
+               "properties": {
+               "sensor": {
+                 "name": "meterSensor", 
+                 "version": "1.0.1", 
+                 "label": "meterSensor_1", 
+                 "requiredProperties": [ {"meterNumber": "1"} ] 
+                 } 
+               } 
+            } ] 
+   }' https://app.waylay.io/api/tasks
 {% endhighlight %}
 
 [doc]: http://docs.waylay.io/Tasks-and-Templates.html
