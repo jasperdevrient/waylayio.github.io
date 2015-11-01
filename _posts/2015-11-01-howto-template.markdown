@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Creating template - best practices"
+title:      "How to creata a template - best practices"
 date:       2015-11-01 10:19:06
 categories: integration
 ---
