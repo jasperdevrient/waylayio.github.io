@@ -11,7 +11,7 @@ With our visual designer tool you can debug and create new [templates] [doc]. Us
 var meterNumber = options.requiredProperties.meterNumber || waylayUtil.getResource(options)
 {% endhighlight %}
 
-In this example, the sensor that will fetch the data from the external system needs only one input argument _meterNumber_. That input argument can be either defined on the sensor level (via properties), or like in this case, via the resource concept. 
+In this example, the sensor that will fetch the data from the external system and needs only one input argument _meterNumber_. That input argument can be either defined on the sensor level (via properties), or like in this case, via the resource concept. 
 When you associate the sensor with a resource name, you need specify a resource on the node level as: 
 
 * fixed resource name (e.g. house1, deviceX, meter123...)
@@ -43,12 +43,10 @@ There is another way to do the same, not using resource concept, but as you will
 var meterNumber = options.requiredProperties.meterNumber || waylayUtil.getResource(options)
 {% endhighlight %}
 
-we can see that sensor could also receive input arguments via this property _options.requiredProperties.meterNumber_. So, the other option to start the same task was to actually use the REST call that defines properties on the sensor level:
+we can see that the sensor can also receive the input argumens via property _options.requiredProperties.meterNumber_. So, the other option to start the same task was to use the REST call that defines this property on the sensor level:
 {% highlight javascript linenos %}
 curl --user <KEY>:<SECRET> -H "Content-Type:application/json" -X POST -d '{"name": "test", "template": "dailyConsumption", "resource": "meter 1", "start": true, "type": "periodic", "frequency": 86400000, "nodes": [{"name": "meterSensorNode", "properties": {"sensor": {"name": "meterSensor", "version": "1.0.1", "label": "meterSensor_1", "requiredProperties": [{"meterNumber": "1"} ] } } } ] }' https://app.waylay.io/api/tasks
 {% endhighlight %}
 
-
-{% endhighlight %}
 [doc]: http://docs.waylay.io/Tasks-and-Templates.html
 [rest]: http://docs.waylay.io/Waylay-REST-API-documentation.html
