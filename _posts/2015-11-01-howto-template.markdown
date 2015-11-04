@@ -11,7 +11,7 @@ With our visual designer tool you can debug and create new [templates] [doc]. Us
 var meterNumber = options.requiredProperties.meterNumber || waylayUtil.getResource(options)
 {% endhighlight %}
 
-In this example, the sensor that will fetch the data from the external system needs only one input argument _meterNumber_. The rest of the code is omitted, since this can be either a REST call, db query etc..  The input argument can be either defined on the sensor level (via properties as _ options.requiredProperties.meterNumber_), or like in this case, via the resource [concept] [resource]. When you associate the sensor with a resource name, you need specify a resource on the node level as: 
+In this example, the sensor that will fetch the data from the external system needs only one input argument _meterNumber_. The rest of the code is omitted, since this can be either a REST call, db query etc..  The input argument can be either defined on the sensor level (via properties as _options.requiredProperties.meterNumber_), or like in this case, via the resource [concept] [resource]. When you associate the sensor with a resource name, you need specify a resource on the node level as: 
 
 * fixed resource name (e.g. house1, deviceX, meter123...)
 * $ (resource name will be inherited from the task resource name)
