@@ -11,16 +11,15 @@ With our visual designer tool you can debug and create new [templates] [doc]. Us
 var meterNumber = options.requiredProperties.meterNumber || waylayUtil.getResource(options)
 {% endhighlight %}
 
-In this example, the sensor that will fetch the data from the external system and needs only one input argument _meterNumber_. That input argument can be either defined on the sensor level (via properties), or like in this case, via the resource concept. 
-When you associate the sensor with a resource name, you need specify a resource on the node level as: 
+In this example, the sensor that will fetch the data from the external system needs only one input argument _meterNumber_. The rest of the code is omitted, since this can be either a REST call, db query etc..  The input argument can be either defined on the sensor level (via properties as _ options.requiredProperties.meterNumber_), or like in this case, via the resource [concept] [resource]. When you associate the sensor with a resource name, you need specify a resource on the node level as: 
 
 * fixed resource name (e.g. house1, deviceX, meter123...)
 * $ (resource name will be inherited from the task resource name)
 * $taskId (resource name will be inherited from the task ID)
 
-_getResource_ call will automatically translate $, $taskId into the runtime resource name. Waylay engine will make sure that correct translation happened. There is another use case where you can use resource concept (stream data), but more about that in the future posts.
+_getResource_ call will automatically translate $, $taskId at runtime to the proper resource name. Waylay engine will make sure that correct translation happens. There is another use case where you can use resource concept (stream data), but more about that in the future posts.
 
-Once you have created a template you can start it using a REST [call] [rest]. In this example, we call the template _dailyConsumption_ with resource defined as an integer. Once the task is started, this resource name (in this case a number) will be propagated to the correct sensor. 
+Once you have created a template you can start a task using a REST [call] [rest]. In this example, we call the template _dailyConsumption_ with resource defined as an integer. That integer will be used as the resource input to fetch the meter data. Once the task is started, this resource name (in this case a number) will be propagated to the correct sensor. 
 
 {% highlight javascript linenos %}
 for i in {1..100000}
@@ -38,12 +37,12 @@ do
 done
 {% endhighlight %}
 
-There is another way to do the same, not using resource concept, but as you will see, it is a little bit more complicated. If we look back into this code:
+There is another way to do the same, not using the resource concept, but as you will see below, it is a little bit more complicated. If we look back into this code:
 {% highlight javascript linenos %}
 var meterNumber = options.requiredProperties.meterNumber || waylayUtil.getResource(options)
 {% endhighlight %}
 
-we can see that the sensor can also receive the input argumens via property _options.requiredProperties.meterNumber_. So, the other option to start the same task was to use the REST call that defines this property on the sensor level:
+we can see that the sensor can also receive the input arguments via the property _options.requiredProperties.meterNumber_. So, the other option to start the same task was to use the REST call that sets this property on the sensor level:
 {% highlight javascript linenos %}
 curl --user <KEY>:<SECRET> -H "Content-Type:application/json" -X POST -d 
    '{
@@ -68,4 +67,5 @@ curl --user <KEY>:<SECRET> -H "Content-Type:application/json" -X POST -d
 
 [doc]: http://docs.waylay.io/Tasks-and-Templates.html
 [rest]: http://docs.waylay.io/Waylay-REST-API-documentation.html
+[resource] : http://docs.waylay.io/Plugin-API.html#functiontoretrievestreamdata
 
