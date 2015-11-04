@@ -67,5 +67,5 @@ curl --user <KEY>:<SECRET> -H "Content-Type:application/json" -X POST -d
 
 [doc]: http://docs.waylay.io/Tasks-and-Templates.html
 [rest]: http://docs.waylay.io/Waylay-REST-API-documentation.html
-[resource] : http://docs.waylay.io/Plugin-API.html#functiontoretrievestreamdata
+[resource]: http://docs.waylay.io/Plugin-API.html#functiontoretrievestreamdata
 
