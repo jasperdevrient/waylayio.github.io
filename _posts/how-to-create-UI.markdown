@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      "How to creata a simple application using waylay API"
-date:       2015-11-01 10:19:06
+date:       2015-12-12 10:19:06
 categories: UI
 ---
 
