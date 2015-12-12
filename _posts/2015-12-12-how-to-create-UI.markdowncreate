@@ -5,16 +5,19 @@ date:       2015-12-12 10:19:06
 categories: UI
 ---
 
-With waylay you can create very complex rules using simple [template] [rest]. In order to create a rule and initiate a task, you need to do define:
+With waylay you can create very complex rules using simple [template] [rest]. 
+In order to create a rule and initiate a task, you need to do define:
 
 * sensors and actuators, 
 * conditions under which actuators need to be executed
 * relations between sensors and gates
 * task definition (periodic, onetime, cron, reactive).
-* 
+
 For more info, please check the documentation
 
-We have create a small boostrap/jquery app that shows how you can create an application on top of waylay. Application is available in [github] [repo]. In this application, the end user selects the airco machine (as an asset ID), condition under which the e-mail should be sent, whether the e-mail should be send during a week AND/OR weekends and it also shows how to template a message in the body of the e-mail with exact conditions and measurements under which the incident is reported.
+We have create a small boostrap/jquery app that shows how you can create an application on top of waylay. 
+Application is available in [github] [repo]. In this application, the end user selects the airco machine (as an asset ID), condition under which the e-mail should be sent, whether the e-mail should be send during a week AND/OR weekends and it also shows how to template a message in the body of the e-mail with exact conditions and measurements under which the incident is reported.
+
 ![UI application]({{ site.baseurl }}/assets/images/application.png)
 
 Before you use this application, you will need a waylay account and you will need to login to this application using your API keys.
