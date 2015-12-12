@@ -13,6 +13,8 @@ With waylay you can create very complex rules using simple [template] [rest]. In
 For more info, please check the documentation
 
 We have create a small boostrap/jquery app that shows how you can create an application on top of waylay. Application is available in [github] [repo].
+![UI application]({{ site.baseurl }}/assets/images/application.png)
+
 In order to use it, you will need a waylay account and you will need to login to this application using your API keys.
 We also added three more features that are similar to our [labs website] [labs]:
 * allow you to push runtime data
