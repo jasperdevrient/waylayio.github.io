@@ -1,11 +1,11 @@
 ---
 layout:     post
-title:      "How to creata a simple application using waylay API"
+title:      "How to create a simple application using waylay API"
 date:       2015-12-12 10:19:06
 categories: UI
 ---
 
-With waylay you can create very complex rules using simple [template] [rest]. In order to create a rule and initiaite a task, you need to do define:
+With waylay you can create very complex rules using simple [template] [rest]. In order to create a rule and initiate a task, you need to do define:
 
 * sensors and actuators, 
 * conditions under which actuators need to be executed
@@ -22,7 +22,7 @@ We also added three more features that are similar to our [labs website] [labs]:
 
 * allow you to push runtime data
 * allow you to simulate data from the csv file
-* show you how to use our cloud cache in combinataion with freeboard
+* show you how to use our cloud cache in combination with freeboard
 
 In order to simulate an incident, you can simply push the data that is above the configured threshold. 
 
