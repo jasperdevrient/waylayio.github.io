@@ -14,15 +14,17 @@ With waylay you can create very complex rules using simple [template] [rest]. In
 * 
 For more info, please check the documentation
 
-We have create a small boostrap/jquery app that shows how you can create an application on top of waylay. Application is available in [github] [repo].
+We have create a small boostrap/jquery app that shows how you can create an application on top of waylay. Application is available in [github] [repo]. In this application, the end user selects the airco machine (as an asset ID), condition under which the e-mail should be sent, whether the e-mail should be send during a week AND/OR weekends and it also shows how to template a message in the body of the e-mail with exact conditions and measurements under which the incident is reported.
 ![UI application]({{ site.baseurl }}/assets/images/application.png)
 
-In order to use it, you will need a waylay account and you will need to login to this application using your API keys.
+Before you use this application, you will need a waylay account and you will need to login to this application using your API keys.
 We also added three more features that are similar to our [labs website] [labs]:
 
 * allow you to push runtime data
 * allow you to simulate data from the csv file
 * show you how to use our cloud cache in combinataion with freeboard
+
+In order to simulate an incident, you can simply push the data that is above the configured threshold. 
 
 You can also access our live here: [demo] [demo]
 
