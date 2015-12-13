@@ -91,6 +91,8 @@ In order to simulate an incident, you can simply push the data that is above the
 
 You can also access our live here: [demo] [demo]
 
+Note: _In case that the rule is the same for all machines, the demo application would look the same but you could just invoke the task using the template name, rather than creating a rule on the fly as decribed above._
+
 
 [repo]: https://github.com/waylayio/demo-hvac
 [rest]: http://docs.waylay.io/Waylay-REST-API-documentation.html#Createthetask
