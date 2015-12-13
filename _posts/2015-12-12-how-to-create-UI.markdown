@@ -20,6 +20,66 @@ Application is available in [github] [repo]. In this application, the end user s
 
 ![UI application]({{ site.baseurl }}/assets/images/application.png)
 
+This application creates a template object that is send using REST call towards waylay. Here is the template object:
+
+{% highlight javascript linenos %}
+{
+	"sensors": [{
+		"label": "data",
+		"name": "streamingDataSensor",
+		"version": "1.0.9",
+		"resource": "$",
+		"position": [245, 205],
+		"properties": {
+			"parameter": "compressor hours",
+			"threshold": "10000"
+		}
+	}, {
+		"label": "isWeekend",
+		"name": "isWeekend",
+		"version": "1.0.3",
+		"resource": "airco_SN32591230",
+		"position": [245, 405],
+		"properties": {
+			"timeZone": "Europe/Brussels"
+		}
+	}],
+	"actuators": [{
+		"label": "Mail",
+		"name": "templateMail",
+		"version": "0.0.2",
+		"position": [492, 156],
+		"properties": {
+			"from": "support@waylay.io",
+			"to": "test@waylay.io",
+			"subject": "Alert for {{RESOURCE}}",
+			"message": "e-mail text"
+		}
+	}],
+	"relations": [{
+		"label": "Gate",
+		"type": "GENERAL",
+		"position": [481, 313],
+		"parentLabels": ["isWeekend", "data"],
+		"combinations": [
+			["FALSE", "Above"]
+		]
+	}],
+	"triggers": [{
+		"destinationLabel": "Mail",
+		"invocationPolicy": 1,
+		"sourceLabel": "Gate",
+		"statesTrigger": ["TRUE"]
+	}],
+	"task": {
+		"name": "Create alarm task for machine airco_SN32591230",
+		"type": "reactive",
+		"resource": "airco_SN32591230",
+		"start": true
+	}
+}
+{% endhighlight %}
+
 Before you use this application, you will need a waylay account and you will need to login to this application using your API keys.
 We also added three more features that are similar to our [labs website] [labs]:
 
@@ -30,6 +90,7 @@ We also added three more features that are similar to our [labs website] [labs]:
 In order to simulate an incident, you can simply push the data that is above the configured threshold. 
 
 You can also access our live here: [demo] [demo]
+
 
 [repo]: https://github.com/waylayio/demo-hvac
 [rest]: http://docs.waylay.io/Waylay-REST-API-documentation.html#Createthetask
