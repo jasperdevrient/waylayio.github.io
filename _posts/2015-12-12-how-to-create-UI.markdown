@@ -13,14 +13,14 @@ In order to create a rule and initiate a task, you need to do define:
 * relations between sensors and gates
 * task definition (periodic, onetime, cron, reactive).
 
-For more info, please check the documentation
+For more info, please check the documentation.
 
-We have create a small boostrap/jquery app that shows how you can create an application on top of waylay. 
-Application is available in [github] [repo]. In this application, the end user selects the airco machine (as an asset ID), condition under which the e-mail should be sent, whether the e-mail should be send during a week AND/OR weekends and it also shows how to template a message in the body of the e-mail with exact conditions and measurements under which the incident is reported.
+We have created a small boostrap/jquery app that shows how you can create an application on top of waylay. 
+The application is available in [github] [repo]. In this application, the end user selects the airco machine (as an asset ID), the condition under which the e-mail should be sent, whether the e-mail should be sent during the week AND/OR weekends and it also shows how to template a message in the body of the e-mail with the exact conditions and measurements under which the incident is reported.
 
 ![UI application]({{ site.baseurl }}/assets/images/application.png)
 
-This application creates a template object that is send using REST call towards waylay. Here is the template object:
+This application creates a template object that is send using a REST call towards the waylay platform. Here is the template object:
 
 {% highlight javascript linenos %}
 {
@@ -89,7 +89,7 @@ We also added three more features that are similar to our [labs website] [labs]:
 
 In order to simulate an incident, you can simply push the data that is above the configured threshold. 
 
-You can also access our live here: [demo] [demo]
+You can also access the live application here: [demo] [demo]
 
 Note: _In case that the rule is the same for all machines, the demo application would look the same but you could just invoke the task using the template name, rather than creating a rule on the fly as decribed above._
 
