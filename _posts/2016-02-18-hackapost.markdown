@@ -5,7 +5,7 @@ date:       2016-02-18 14:59:06
 categories: hackathon
 ---
 
-Recently waylay [waylayio] and solvice [solvice] joined the forces for the hackapost [hackapost] event in Brussels. We wanted to integrate our orchestration/notification engine with the planning/optimization API backend of solvice. Within few hours, we developed "uber like" B2B application, where based on the LoRa enabled sensor, our joint solution triggered optimization and routing of the cars for the fast packet delivery, including notification to the drivers what is the best route to take. Interesting part of this challenge was that both the source and destination of the delivery was not constant.
+Recently waylay [waylayio] and solvice [solvice] joined the forces for the [hackapost] event in Brussels. We wanted to integrate our orchestration/notification engine with the planning/optimization API backend of solvice. Within few hours, we developed "uber like" B2B application, where based on the LoRa enabled sensor, our joint solution triggered optimization and routing of the cars for the fast packet delivery, including notification to the drivers what is the best route to take. Interesting part of this challenge was that both the source and destination of the delivery was not constant.
 
 More info on this particular use case will be in another blog (on the main web site) [waylayioblog]. In this blog, I only want to focus on one simple way of doing "SOA" integration - especially if you need to do something quick at hackathons.  
 
