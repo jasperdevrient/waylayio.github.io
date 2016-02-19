@@ -12,7 +12,7 @@ More info on this particular use case will be in another blog (on the main web s
 # Firebase as a "SOA" bus
 Our solution started with LoRa enabled trigger event (_Binary sensor_). Using proximus [proximus] API backend, we registered a webhook that propageted LoRa events towards the Waylay Broker. Once we saw data in the waylay platform, we were ready to start with integration.
 
-The way you typically deal with integration tasks is go over the API of the third parties, and try to figure out exactly what kind of calls you need, whether the calls are async or not, and what variant of REST/FORM/POST/PUT/JSON/BasicAuth/BearerToken is needed to pass the right info. And that had to be done on both sides. But we had no time for that - we only had few hours to hack it.
+The way you typically deal with integration tasks is to go over the APIs of the third parties, and try to figure out exactly what kind of calls you need, whether the calls are async or not, and what variant of REST/FORM/POST/PUT/JSON/BasicAuth/BearerToken is needed to pass the right info. And that had to be done on both sides. But we had no time for that - we only had few hours to hack it.
 
 Instead of doing this, we figured it out that would be much easier to allocate one firebase project for this hackathon, and use it as a "SOA" bus. Since you can easily POST JSON's in the firebase project endpoints and register webhooks/websokcets/SSE's on the data change, we had one simple way of communicating between backends. More over, we could use the same events to update UI, since the frontend would process websockets at the same time as any other backend service.
 
