@@ -16,7 +16,7 @@ The way you typically deal with integration tasks is to go over the APIs of the 
 
 Instead of doing this, we figured it out that would be much easier to allocate one firebase project for this hackathon, and use it as a "SOA" bus. Since you can easily POST JSON's in the firebase project endpoints and register webhooks/websockets/SSE's on the data change, we had one simple way of communicating between backends. More over, we could use the same events to update UI, since the frontend would process websockets at the same time as any other backend service.
 
-# Pushover as the the device client messanger
+# Pushover as a device client messanger
 Another challenge was to inform a driver on which route to take between two locations. This time, we used a [pushover] service, which allows you to send messages towards Android/iOS devices or web clients via the API. So, next to a firebase actuator, we also created a pushover actuator in waylay and embedded in the message a URL that pointed to the web app. When a "driver" clicked the URL on the phone (pushover notification), his phone would open a web app (in order to accept or deny the assignment). That web app would then use the firebase to send the feedback back to the waylay platform. That in return would either trigger a new calculation on solvice, or start tracking the delivery (in case the driver accepted the assignment). 
 Done! Uber in 4hours!
 
